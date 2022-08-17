@@ -49,6 +49,9 @@ export function Checkout() {
         <CheckoutSection>
           <strong>Selected Coffees</strong>
           <CheckoutBox>
+
+            {/* Filter and display only Coffees that have the attribute "isSelected" = true */}
+            {/* Need access to useState Coffees in Home page */}
             <CoffeeCardCheckout />
 
             <PriceSum>
@@ -56,21 +59,21 @@ export function Checkout() {
                 <p>Total items</p>
                 <div>
                   <p>€</p>
-                  <p>12,70</p>
+                  <p>0,00</p>
                 </div>
               </Item>
               <Item>
                 <p>Delivery fee</p>
                 <div>
                   <p>€</p>
-                  <p>2,00</p>
+                  <p>0,00</p>
                 </div>
               </Item>
               <Item>
                 <strong>Total</strong>
                 <div>
                   <strong>€</strong>
-                  <strong>14,70</strong>
+                  <strong>0,00</strong>
                 </div>
               </Item>
               <NavLink to="/Confirmation" title="Confirmation">

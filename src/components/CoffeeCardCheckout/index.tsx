@@ -15,7 +15,7 @@ export function CoffeeCardCheckout() {
             <Actions>
               <AddOrSubtractButton />
               <RemoveButton type="button">
-                <Trash color="#8047F8"/>
+                <Trash size={16} />
                 REMOVE
               </RemoveButton>
             </Actions>

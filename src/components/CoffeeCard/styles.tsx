@@ -10,7 +10,6 @@ export const CoffeeCardContainer = styled.div`
   align-items: center;
   padding: 0 1.5rem 1.5rem 1.5rem;
   border-radius: 6px 36px 6px 36px;
-  /* margin-bottom: 2rem; */
 
   img {
     height: 120px;
@@ -48,15 +47,20 @@ export const Buy = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 1.5rem;
+`
 
-  button[type=submit] {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    border: 0;
-    color: ${props => props.theme['base-white']};
-    background: ${props => props.theme['purple-dark']};
-    border-radius: 6px;
+export const CartButton = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: 0;
+  color: ${props => props.theme['base-white']};
+  background: ${props => props.theme['purple-dark']};
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
   }
 `
 

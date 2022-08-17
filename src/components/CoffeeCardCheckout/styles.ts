@@ -37,9 +37,15 @@ export const RemoveButton = styled.button`
   gap: 0.25rem;
   border: 0;
   background: ${props => props.theme['base-button']};
+  color: ${props => props.theme['purple']};
   padding: 0.5rem;
   border-radius: 6px;
   font-size: 0.75rem;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
 `
 
 export const Separator = styled.div`
