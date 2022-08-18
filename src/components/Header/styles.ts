@@ -5,25 +5,25 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
 
-  div {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  a {
+export const Navigation = styled.div`
   display: flex;
   align-items: center;
-  color: ${props => props.theme["yellow-dark"]};
-  background: ${props => props.theme['yellow-light']};
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 2px solid white;
+  gap: 0.5rem;
 
-  &:hover {
-    border: 2px solid ${props => props.theme["yellow-dark"]};
-  }
+  a {
+    display: flex;
+    align-items: center;
+    color: ${props => props.theme["yellow-dark"]};
+    background: ${props => props.theme['yellow-light']};
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 2px solid white;
+
+    &:hover {
+      border: 2px solid ${props => props.theme["yellow-dark"]};
+    }
   }
 `
 

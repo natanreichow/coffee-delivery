@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const Container = styled.div`
+export const CartCoffeeContainer = styled.div``
+
+export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

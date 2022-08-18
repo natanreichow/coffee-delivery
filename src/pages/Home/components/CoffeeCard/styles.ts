@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const CoffeeCardContainer = styled.div`
   width: 256px;
@@ -35,7 +35,7 @@ export const CoffeeCardContainer = styled.div`
     font-size: 0.875rem;
   }
 
-  form {
+  div {
     display: flex;
     gap: 0.5rem;
   }
@@ -63,6 +63,3 @@ export const CartButton = styled.button`
     opacity: 0.7;
   }
 `
-
-
-
