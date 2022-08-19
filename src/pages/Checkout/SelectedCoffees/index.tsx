@@ -1,42 +1,35 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { coffees } from "../../../data";
+import { CartContext } from "../../../contexts/CoffeesContext";
 import { CartCoffee } from "../CartCoffees";
 import { CheckoutBox, Item, PriceSum, SelectedCoffeesContainer } from "./styles";
 
 export function SelectedCoffees() {
+  const { cartItems, totalItemsPrice } = useContext(CartContext)
+
+  const totalItems = totalItemsPrice.toFixed(2)
+  const deliveryFee = (cartItems.length > 0) ? 1.99 : 0
+  const total = (deliveryFee + totalItemsPrice).toFixed(2)
+
   return (
     <SelectedCoffeesContainer>
       <strong>Selected Coffees</strong>
         <CheckoutBox>
-          {coffees.map((coffee) => {
-            if (coffee.isSelected === true) {
-              return (
-                <CartCoffee key={coffee.id} coffee={coffee}/>
-              )
-            }
-          })}
-
+          {cartItems.map((item) => (
+            <CartCoffee key={item.id} coffee={item} />
+          ))}
           <PriceSum>
             <Item>
               <p>Total items</p>
-              <div>
-                <p>€</p>
-                <p>0,00</p>
-              </div>
+              <p>€ {totalItems}</p>
             </Item>
             <Item>
               <p>Delivery fee</p>
-              <div>
-                <p>€</p>
-                <p>0,00</p>
-              </div>
+              <p>€ {deliveryFee}</p>
             </Item>
             <Item>
               <strong>Total</strong>
-              <div>
-                <strong>€</strong>
-                <strong>0,00</strong>
-              </div>
+              <strong>€ {total}</strong>
             </Item>
             <NavLink to="/Confirmation" title="Confirmation">
               <button type="submit">CONFIRM ORDER</button>

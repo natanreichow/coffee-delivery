@@ -33,7 +33,6 @@ export const InfosItems = styled.div`
   gap: 1rem;
   margin-top: 3rem;
 
-
   p {
     display: flex;
     align-items: center;

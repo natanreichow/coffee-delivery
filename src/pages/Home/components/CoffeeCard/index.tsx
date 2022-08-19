@@ -1,5 +1,7 @@
 import { Check, ShoppingCart } from "phosphor-react";
+import { useContext, useState } from "react";
 import { AddOrSubtractButton } from "../../../../components/AddOrSubtractButton";
+import { CartContext } from "../../../../contexts/CoffeesContext";
 import { Buy, CartButton, CoffeeCardContainer } from "./styles";
 
 export interface Coffee {
@@ -9,7 +11,6 @@ export interface Coffee {
   type: string
   description: string
   price: number
-  isSelected: boolean
 }
 
 interface CoffeeCardProps {
@@ -17,6 +18,27 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const { addCoffeeToCart } = useContext(CartContext)
+  const [quantity, setQuantity] = useState(1)
+
+  function increaseQuantity() {
+    setQuantity((state) => state + 1)
+  }
+
+  function decreaseQuantity() {
+    if (quantity > 1) {
+      setQuantity((state) => state - 1)
+    }
+  }
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      quantity
+    }
+    addCoffeeToCart(coffeeToAdd)
+  }
+
   return (
     <CoffeeCardContainer key={coffee.id}>
       <img src={`/coffees/${coffee.photo}`} />
@@ -27,12 +49,13 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
       <Buy>
         <p>€ <strong>{coffee.price}</strong></p>
         <div>
-          <AddOrSubtractButton />
-          <CartButton type="button">
-            {coffee.isSelected === true 
-              ? <Check size={22} weight="bold"/>
-              : <ShoppingCart weight="fill" size={22} />
-            }
+          <AddOrSubtractButton 
+            quantity={quantity}
+            onIncrease={increaseQuantity}
+            onDecrease={decreaseQuantity}
+          />
+          <CartButton type="button" onClick={handleAddToCart}>
+            <ShoppingCart weight="fill" size={22} />
           </CartButton>
         </div>
       </Buy>

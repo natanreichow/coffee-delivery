@@ -56,10 +56,17 @@ export const CartButton = styled.button`
   border: 0;
   color: ${props => props.theme['base-white']};
   background: ${props => props.theme['purple-dark']};
+  border: 1px solid ${props => props.theme['purple-dark']};
   border-radius: 6px;
   cursor: pointer;
 
   &:hover {
     opacity: 0.7;
+  }
+
+  &:focus {
+    background: ${props => props.theme['purple-light']};
+    color: ${props => props.theme['purple-dark']};
+    border: 1px solid ${props => props.theme['purple-dark']};
   }
 `

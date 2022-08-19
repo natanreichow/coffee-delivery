@@ -1,8 +1,12 @@
 import { HeaderContainer, LocationTag, Navigation } from "./styles";
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CoffeesContext";
 
 export function Header() {
+  const { numberOfItemsInCart } = useContext(CartContext)
+
   return (
     <HeaderContainer>
       <NavLink to="/" title="Home">
@@ -15,6 +19,9 @@ export function Header() {
         </LocationTag>
         <NavLink to="/Checkout" title="Checkout">
           <ShoppingCart size={20} weight="fill" />
+          {(numberOfItemsInCart > 0) &&
+            <span>{numberOfItemsInCart}</span>
+          }
         </NavLink>
       </Navigation>
     </HeaderContainer>

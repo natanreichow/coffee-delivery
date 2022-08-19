@@ -7,7 +7,6 @@ export const coffees = [
     type: 'Expresso Tradicional',
     description: 'The traditional Expresso with fresh ground grains',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '2',
@@ -16,7 +15,6 @@ export const coffees = [
     type: 'Americano',
     description: 'Not as strong as the tradicional expresso',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '3',
@@ -25,7 +23,6 @@ export const coffees = [
     type: 'Coffee with Milk',
     description: 'Expresso tradicional with vaporized milk',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '4',
@@ -34,7 +31,6 @@ export const coffees = [
     type: 'Latte',
     description: 'A shot of espresso with double the milk and creamy foam',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '5',
@@ -43,7 +39,6 @@ export const coffees = [
     type: 'Capuccino',
     description: 'Cinnamon drink made from equal parts coffee, milk and foam',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '6',
@@ -52,7 +47,6 @@ export const coffees = [
     type: 'Macchiato',
     description: 'Espresso mixed with some hot milk and froth',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '7',
@@ -61,7 +55,6 @@ export const coffees = [
     type: 'Mocaccino',
     description: 'The traditional Expresso with fresh ground grains',
     price: 2.49,
-    isSelected: false
   },
   {
     id: '8',
@@ -70,7 +63,6 @@ export const coffees = [
     type: 'Hot Chocolate',
     description: 'The traditional Expresso with fresh ground grains',
     price: 2.99,
-    isSelected: false
   },
   {
     id: '9',
@@ -79,7 +71,6 @@ export const coffees = [
     type: 'Cubano',
     description: 'The traditional Expresso with fresh ground grains',
     price: 3.49,
-    isSelected: false
   },
   {
     id: '10',
@@ -88,7 +79,6 @@ export const coffees = [
     type: 'Havaiano',
     description: 'The traditional Expresso with fresh ground grains',
     price: 2.99,
-    isSelected: false
   },
   {
     id: '11',
@@ -97,7 +87,6 @@ export const coffees = [
     type: 'Arabish',
     description: 'The traditional Expresso with fresh ground grains',
     price: 2.99,
-    isSelected: false
   },
   {
     id: '12',
@@ -106,6 +95,5 @@ export const coffees = [
     type: 'Irish',
     description: 'The traditional Expresso with fresh ground grains',
     price: 3.49,
-    isSelected: false
   }
 ]

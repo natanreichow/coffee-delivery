@@ -2,28 +2,22 @@ import { Minus, Plus } from "phosphor-react";
 import { useState } from "react";
 import { Container, NumberOfCoffee  } from "./styles";
 
-export function AddOrSubtractButton() {
-  const [count, setCount] = useState(1)
+interface ButtonProps {
+  quantity: number
+  onIncrease: () => void
+  onDecrease: () => void
+}
 
-  function increaseCount() {
-    setCount((count) => count + 1)
-  }
-
-  function decreaseCount() {
-    if (count > 1) {
-      setCount((count) => count -1 )
-    }
-  }
-
+export function AddOrSubtractButton({ quantity, onIncrease, onDecrease }: ButtonProps) {
   return (
     <Container>
-      <button type="button" onClick={decreaseCount}>
+      <button type="button" onClick={onDecrease}>
         <Minus size={14} weight="bold" color="#8047F8"/>
       </button>
 
-      <NumberOfCoffee>{count}</NumberOfCoffee>
+      <NumberOfCoffee>{quantity}</NumberOfCoffee>
 
-      <button type="button" onClick={increaseCount}>
+      <button type="button" onClick={onIncrease}>
         <Plus size={14} weight="bold" color="#8047F8"/>
       </button>
 
