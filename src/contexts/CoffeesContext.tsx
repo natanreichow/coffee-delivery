@@ -10,19 +10,30 @@ interface CartContextProviderProps {
   children: ReactNode
 }
 
+interface CreateInputData {
+  zipCode: string
+  city: string
+  address: string
+  apartamentNumber: string
+}
+
 interface CartContextProps {
   cartItems: CartItem[]
+  inputData: CreateInputData[]
   numberOfItemsInCart: number
   totalItemsPrice: number
   addCoffeeToCart: (coffee: CartItem) => void
   removeCartItem: (coffeeCartToDelete: string) => void
   changeCartItemQuantity: (coffeeCartId: string, type: 'increase' | 'decrease') => void
+  createNewInputs: (data: CreateInputData) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
 
 export function CartContextProvider({children}: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  const [inputData, setInputData] = useState<CreateInputData[]>([])
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeeAlreadyExists = cartItems.findIndex((item) => item.id === coffee.id)
@@ -58,6 +69,16 @@ export function CartContextProvider({children}: CartContextProviderProps) {
     setCartItems(newCart)
   }
 
+  function createNewInputs(data: CreateInputData) {
+    const newData = {
+      zipCode: data.zipCode,
+      city: data.city,
+      apartamentNumber: data.apartamentNumber,
+      address: data.address
+    }
+    setInputData([newData])
+  }
+
   const totalItemsPrice = cartItems.reduce((totalPrice, item) => {
     return totalPrice + item.quantity * item.price
   }, 0)
@@ -67,11 +88,13 @@ export function CartContextProvider({children}: CartContextProviderProps) {
   return (
     <CartContext.Provider value={{
       cartItems,
+      inputData,
       addCoffeeToCart,
       numberOfItemsInCart,
       removeCartItem,
       changeCartItemQuantity,
-      totalItemsPrice
+      totalItemsPrice,
+      createNewInputs,
     }}>
       {children}
     </CartContext.Provider>

@@ -33,6 +33,10 @@ export const PriceSum = styled.div`
     &:hover {
       opacity: 0.7;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 `
 

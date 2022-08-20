@@ -5,11 +5,13 @@ import { CartCoffee } from "../CartCoffees";
 import { CheckoutBox, Item, PriceSum, SelectedCoffeesContainer } from "./styles";
 
 export function SelectedCoffees() {
-  const { cartItems, totalItemsPrice } = useContext(CartContext)
+  const { cartItems, totalItemsPrice, numberOfItemsInCart } = useContext(CartContext)
 
   const totalItems = totalItemsPrice.toFixed(2)
   const deliveryFee = (cartItems.length > 0) ? 1.99 : 0
   const total = (deliveryFee + totalItemsPrice).toFixed(2)
+
+  const noItemsInCart = numberOfItemsInCart === 0
 
   return (
     <SelectedCoffeesContainer>
@@ -31,9 +33,7 @@ export function SelectedCoffees() {
               <strong>Total</strong>
               <strong>€ {total}</strong>
             </Item>
-            <NavLink to="/Confirmation" title="Confirmation">
-              <button type="submit">CONFIRM ORDER</button>
-            </NavLink>
+              <button type="submit" disabled={noItemsInCart}>CONFIRM ORDER</button>
           </PriceSum>
         </CheckoutBox>
     </SelectedCoffeesContainer>
