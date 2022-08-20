@@ -37,7 +37,7 @@ export function Confirmation() {
                   <span><CurrencyDollar weight="fill" color="white" /></span>
                   <div>
                     <p>Payment on delivery</p>
-                    <strong>Credit Card</strong>
+                    <strong>{input.payment}</strong>
                   </div>
                 </Items>
               </DetailsBox>

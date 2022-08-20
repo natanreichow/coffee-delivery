@@ -5,7 +5,7 @@ import { FormProvider, useForm } from "react-hook-form"
 import * as zod from "zod"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from "react";
-import { CartContext } from "../../contexts/CoffeesContext";
+import { CartContext, CartItem } from "../../contexts/CoffeesContext";
 import { useNavigate } from "react-router-dom"
 
 const newInputsFormValidationSchema = zod.object({
@@ -13,12 +13,13 @@ const newInputsFormValidationSchema = zod.object({
   city: zod.string().min(1, 'Inform the city'),
   address: zod.string().min(1, 'Inform the address'),
   apartamentNumber: zod.string().min(1, 'Inform the apartament number'),
+  payment: zod.string()
 })
 
 type NewInputsFormData = zod.infer<typeof newInputsFormValidationSchema>
 
 export function Checkout() {
-  const { createNewInputs } = useContext(CartContext)
+  const { createNewInputs, removeAllItemsFromCart } = useContext(CartContext)
 
   const newInputsForm = useForm<NewInputsFormData>({
     resolver: zodResolver(newInputsFormValidationSchema),
@@ -27,6 +28,7 @@ export function Checkout() {
       city: '',
       address: '',
       apartamentNumber: '',
+      payment: undefined
     },
   })
 
@@ -37,6 +39,7 @@ export function Checkout() {
   function handleCreateNewInputs(data: NewInputsFormData) {
     navigate('/Confirmation')
     createNewInputs(data)
+    removeAllItemsFromCart()
     reset()
   }
 

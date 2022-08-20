@@ -71,28 +71,41 @@ export const PaymentMethodButtons = styled.div`
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  width: 100%;
 
-  button {
-    padding: 1rem;
-    border: 1px solid ${props => props.theme['base-card']};
-    border-radius: 6px;
-    background: ${props => props.theme['base-button']};
-    font-size: 0.75rem;
-    width: 178.67px;
+  label {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid ${props => props.theme['base-card']};
+    font-size: 0.75rem;
+    background: ${props => props.theme['base-button']};
+    width: 31.45%;
     cursor: pointer;
-    
-    &:hover {
-      background: ${props => props.theme['purple-light']};
-    }
-
-    &:focus {
-      border: 1px solid ${props => props.theme['purple']};
-      background: ${props => props.theme['purple-light']};
-    }
   }
+
+  input {
+    display: none;
+  }
+
+  div {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  input:checked + label {
+    border: 1px solid ${props => props.theme['purple']};
+    background: ${props => props.theme['purple-light']};
+  }
+`
+
+export const LabelContainer = styled.div`
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 `
 

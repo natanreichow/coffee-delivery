@@ -15,6 +15,7 @@ interface CreateInputData {
   city: string
   address: string
   apartamentNumber: string
+  payment: string
 }
 
 interface CartContextProps {
@@ -26,6 +27,7 @@ interface CartContextProps {
   removeCartItem: (coffeeCartToDelete: string) => void
   changeCartItemQuantity: (coffeeCartId: string, type: 'increase' | 'decrease') => void
   createNewInputs: (data: CreateInputData) => void
+  removeAllItemsFromCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -56,6 +58,10 @@ export function CartContextProvider({children}: CartContextProviderProps) {
     setCartItems(cartWithoutDeletedOne)
   }
 
+  function removeAllItemsFromCart() {
+    setCartItems([])
+  }
+
   function changeCartItemQuantity(coffeeCartId: string, type: 'increase' | 'decrease') {
     const newCart = produce(cartItems, (draft) => {
       const coffeeAlreadyExists = cartItems.findIndex((item) => item.id === coffeeCartId)
@@ -74,7 +80,8 @@ export function CartContextProvider({children}: CartContextProviderProps) {
       zipCode: data.zipCode,
       city: data.city,
       apartamentNumber: data.apartamentNumber,
-      address: data.address
+      address: data.address,
+      payment: data.payment
     }
     setInputData([newData])
   }
@@ -83,7 +90,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
     return totalPrice + item.quantity * item.price
   }, 0)
 
-  const numberOfItemsInCart = cartItems.length
+  let numberOfItemsInCart = cartItems.length
 
   return (
     <CartContext.Provider value={{
@@ -95,6 +102,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
       changeCartItemQuantity,
       totalItemsPrice,
       createNewInputs,
+      removeAllItemsFromCart,
     }}>
       {children}
     </CartContext.Provider>

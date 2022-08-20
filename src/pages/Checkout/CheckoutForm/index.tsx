@@ -1,6 +1,6 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { useFormContext } from "react-hook-form";
-import { AddressInputs, AddressSection, AddressSectionHeader, CheckoutFormContainer, PaymentMethodButtons, PaymentSection, PaymentSectionHeader } from "./styles";
+import { AddressInputs, AddressSection, AddressSectionHeader, CheckoutFormContainer, LabelContainer, PaymentMethodButtons, PaymentSection, PaymentSectionHeader } from "./styles";
 
 export function CheckoutForm() {
   const { register } = useFormContext()
@@ -38,9 +38,26 @@ export function CheckoutForm() {
         </PaymentSectionHeader>
 
         <PaymentMethodButtons>
-          <button type="button"><CreditCard color="#8047F8" size={18}/>CREDIT CARD</button>
-          <button type="button"><Bank color="#8047F8" size={18}/>DEBIT CARD</button>
-          <button type="button"><Money color="#8047F8" size={18}/>CASH</button>
+          <input type="radio" {...register('payment')} value="Credit Card" id="creditCard"/>
+          <label htmlFor="creditCard">
+            <div>
+              <CreditCard color="#8047F8" size={18} />CREDIT CARD
+            </div>
+          </label>
+
+          <input type="radio" {...register('payment')} value="Debit Card" id="debitCard"/>
+          <label htmlFor="debitCard">
+            <div>
+              <Bank color="#8047F8" size={18} />DEBIT CARD
+            </div>
+          </label>
+          
+          <input type="radio" {...register('payment')} value="Cash" id="cash"/>
+          <label htmlFor="cash">
+            <div>
+              <Money color="#8047F8" size={18} />CASH
+            </div>
+          </label>
         </PaymentMethodButtons>
       </PaymentSection>
     </CheckoutFormContainer>
